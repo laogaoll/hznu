@@ -39,7 +39,12 @@ class Login extends React.Component {
       this.store.saveUser(r.data)
       saveUser(r.data)
       this.setState({ loading: false, })
-      this.props.history.push("/")
+	  if(r.data.uid == 'jiaowuchu'){
+		this.props.history.push("/print");
+	  }else{
+		this.props.history.push("/");
+	  }
+      
     }else{
       msg('用户密码错误！')
       this.setState({ loading: false, })
